@@ -1,0 +1,9 @@
+RPMreader was written by Andrew Teixeira <ateixeira@gmail.com>.
+
+Information used to write the extension was referenced from the
+following URL:
+
+http://www.rpm.org/max-rpm-snapshot/s1-rpm-file-format-rpm-file-format.html
+
+This page contributed both file format specifications and constant
+definitions used to create the RPMreader extension.

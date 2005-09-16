@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<package packagerversion="1.4.0a2" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0"  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+ <name>rpmreader</name>
+ <channel>pecl.php.net</channel>
+ <summary>RPM file meta information reader</summary>
+ <description>rpmreader is an extension that provides the ability to read RedHat Package Manager (RPM) files' header information.  This extension currently does not provide the functionality to read the signature or archive sections of the RPM file.
+ </description>
+ <lead>
+  <name>Andrew Teixeira</name>
+  <user>atex</user>
+  <email>ateixeira@gmail.com</email>
+  <active>yes</active>
+ </lead>
+ <date>2005-09-16</date>
+ <time>14:46:00</time>
+ <version>
+  <release>0.1</release>
+  <api>0.1</api>
+ </version>
+ <stability>
+  <release>beta</release>
+  <api>beta</api>
+ </stability>
+ <license uri="www.php.net/license/3_0.txt">PHP</license>
+ <contents>
+  <dir name="/">
+   <file role="doc" name="CREDITS"/>
+   <file role="doc" name="LICENSE"/>
+   <file role="src" name="config.m4"/>
+   <file role="src" name="php_rpmreader.h"/>
+   <file role="src" name="rpmreader.c"/>
+   <file role="src" name="rpmreader_io.c"/>
+   <file role="src" name="rpmreader_io.h"/>
+   <dir role="doc" name="examples">
+     <file role="doc" name="example.php"/>
+   </dir>
+  </dir> <!-- / -->
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>5.0.0</min>
+    <max>5.1.0</max>
+   </php>
+   <pearinstaller>
+    <min>1.4.0a2</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>rpmreader</providesextension>
+ <extsrcrelease />
+ <changelog>
+  <release>
+   <version>
+    <release>0.1</release>
+    <api>0.1</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2005-09-16</date>
+   <license uri="http://www.php.net/license/3_0.txt">PHP</license>
+   <notes>Initial Release
+   </notes>
+  </release>
+ </changelog>
+</package>
