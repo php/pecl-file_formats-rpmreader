@@ -325,10 +325,10 @@ PHP_FUNCTION(rpm_get_tag)
 			found = 1;
 			break;
 		}      
-
+		
 		idx = zend_llist_get_next(rfr->idxlist);
 	}
-
+	
 	if (found == 0) {
 		RETURN_FALSE;
 	}
@@ -425,6 +425,7 @@ PHP_FUNCTION(rpm_get_tag)
 	default:
 		RETURN_FALSE;
 	}
+}
 /* }}} */
 
 /* {{{ proto bool rpm_close(resource handle)
@@ -441,18 +442,18 @@ PHP_FUNCTION(rpm_close)
 	
 	ZEND_FETCH_RESOURCE(rfr, php_rpmreader_rsrc *, &arg, -1, "RPM file object", le_rpmreader);
 	
-  if (rfr->stream)
-	  php_stream_close(rfr->stream);
-  if (rfr->rpmhdr)
-	  efree(rfr->rpmhdr);
-  if (rfr->idxlist) {
-	  zend_llist_clean(rfr->idxlist);
-  }
-  
-  RETURN_TRUE;
+	if (rfr->stream)
+		php_stream_close(rfr->stream);
+	if (rfr->rpmhdr)
+		efree(rfr->rpmhdr);
+	if (rfr->idxlist) {
+		zend_llist_clean(rfr->idxlist);
+	}
+	
+	RETURN_TRUE;
 }
 /* }}} */
-
+ 
 /*
  * Local variables:
  * tab-width: 4
