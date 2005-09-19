@@ -77,6 +77,7 @@
 #define RPM_TAG_COPYRIGHT                RPM_TAG_LICENSE
 #define RPM_TAG_PACKAGER                 1015
 #define RPM_TAG_GROUP                    1016
+/*#define RPMTAG_CHANGELOG                 1017*/ /* RPM internal-not used */
 #define RPM_TAG_SOURCE                   1018
 #define RPM_TAG_PATCH                    1019
 #define RPM_TAG_URL                      1020
@@ -86,19 +87,22 @@
 #define RPM_TAG_POSTIN                   1024
 #define RPM_TAG_PREUN                    1025
 #define RPM_TAG_POSTUN                   1026
+#define RPM_TAG_OLDFILENAMES             1027
 #define RPM_TAG_FILESIZES                1028
 #define RPM_TAG_FILESTATES               1029
 #define RPM_TAG_FILEMODES                1030
-#define RPM_TAG_FILEUIDS                 1031
-#define RPM_TAG_FILEGIDS                 1032
+/*#define RPM_TAG_FILEUIDS                 1031*/ /*RPM internal-not used*/
+/*#define RPM_TAG_FILEGIDS                 1032*/ /*RPM internal-not used*/
 #define RPM_TAG_FILERDEVS                1033
 #define RPM_TAG_FILEMTIMES               1034
 #define RPM_TAG_FILEMD5S                 1035
 #define RPM_TAG_FILELINKTOS              1036
 #define RPM_TAG_FILEFLAGS                1037
-#define RPM_TAG_ROOT                     1038
+/*#define RPM_TAG_ROOT                     1038*/ /*RPM internal-not used*/
 #define RPM_TAG_FILEUSERNAME             1039
 #define RPM_TAG_FILEGROUPNAME            1040
+/*#define RPMTAG_EXCLUDE                   1041*/ /*RPM internal-not used*/
+/*#define RPMTAG_EXCLUSIVE                 1042*/ /*RPM internal-not used*/
 #define RPM_TAG_ICON                     1043
 #define RPM_TAG_SOURCERPM                1044
 #define RPM_TAG_FILEVERIFYFLAGS          1045
@@ -108,17 +112,19 @@
 #define RPM_TAG_REQUIREFLAGS             1048
 #define RPM_TAG_REQUIRENAME              1049
 #define RPM_TAG_REQUIREVERSION           1050
-#define RPM_TAG_NOSOURCE                 1051
-#define RPM_TAG_NOPATCH                  1052
+/*#define RPM_TAG_NOSOURCE                 1051*/ /*RPM internal-not used*/
+/*#define RPM_TAG_NOPATCH                  1052*/ /*RPM internal-not used*/
 #define RPM_TAG_CONFLICTFLAGS            1053
 #define RPM_TAG_CONFLICTNAME             1054
 #define RPM_TAG_CONFLICTVERSION          1055
-#define RPM_TAG_BUILDROOT                1057
+/*#define RPMTAG_DEFAULTPREFIX             1056*/ /*RPM internal-not used*/
+/*#define RPM_TAG_BUILDROOT                1057*/ /*RPM internal-not used*/
+/*#define RPMTAG_INSTALLPREFIX             1058*/ /*RPM internal-not used*/
 #define RPM_TAG_EXCLUDEARCH              1059
 #define RPM_TAG_EXCLUDEOS                1060
 #define RPM_TAG_EXCLUSIVEARCH            1061
 #define RPM_TAG_EXCLUSIVEOS              1062
-#define RPM_TAG_AUTOREQPROV              1063
+/*#define RPM_TAG_AUTOREQPROV              1063*/ /*RPM internal-not used*/
 #define RPM_TAG_RPMVERSION               1064
 #define RPM_TAG_TRIGGERSCRIPTS           1065
 #define RPM_TAG_TRIGGERNAME              1066
@@ -129,7 +135,8 @@
 #define RPM_TAG_CHANGELOGTIME            1080
 #define RPM_TAG_CHANGELOGNAME            1081
 #define RPM_TAG_CHANGELOGTEXT            1082
-#define RPM_TAG_PREREQ                   1084
+/*#define RPMTAG_BROKENMD5                 1083*/ /*RPM internal-not used*/
+/*#define RPM_TAG_PREREQ                   1084*/ /*RPM internal-not used*/
 #define RPM_TAG_PREINPROG                1085
 #define RPM_TAG_POSTINPROG               1086
 #define RPM_TAG_PREUNPROG                1087
@@ -139,22 +146,23 @@
 #define RPM_TAG_OBSOLETES                RPM_TAG_OBSOLETENAME
 #define RPM_TAG_VERIFYSCRIPTPROG         1091
 #define RPM_TAG_TRIGGERSCRIPTPROG        1092
-#define RPM_TAG_DOCDIR                   1093
+/*#define RPM_TAG_DOCDIR                   1093*/ /*RPM internal-not used*/
 #define RPM_TAG_COOKIE                   1094
 #define RPM_TAG_FILEDEVICES              1095
 #define RPM_TAG_FILEINODES               1096
 #define RPM_TAG_FILELANGS                1097
 #define RPM_TAG_PREFIXES                 1098
 #define RPM_TAG_INSTPREFIXES             1099
-#define RPM_TAG_TRIGGERIN                1100
-#define RPM_TAG_TRIGGERUN                1101
-#define RPM_TAG_TRIGGERPOSTUN            1102
-#define RPM_TAG_AUTOREQ                  1103
-#define RPM_TAG_AUTOPROV                 1104
-#define RPM_TAG_SOURCEPACKAGE            1106
-#define RPM_TAG_BUILDPREREQ              1108
-#define RPM_TAG_BUILDREQUIRES            1109
-#define RPM_TAG_BUILDCONFLICTS           1110
+/*#define RPM_TAG_TRIGGERIN                1100*/ /*RPM internal-not used*/
+/*#define RPM_TAG_TRIGGERUN                1101*/ /*RPM internal-not used*/
+/*#define RPM_TAG_TRIGGERPOSTUN            1102*/ /*RPM internal-not used*/
+/*#define RPM_TAG_AUTOREQ                  1103*/ /*RPM internal-not used*/
+/*#define RPM_TAG_AUTOPROV                 1104*/ /*RPM internal-not used*/
+/*#define RPM_TAG_SOURCEPACKAGE            1106*/ /*RPM internal-not used*/
+/*#define RPM_TAG_BUILDPREREQ              1108*/ /*RPM internal-not used*/
+/*#define RPM_TAG_BUILDREQUIRES            1109*/ /*RPM internal-not used*/
+/*#define RPM_TAG_BUILDCONFLICTS           1110*/ /*RPM internal-not used*/
+/*#define RPMTAG_BUILDMACROS               1111*/ /*RPM internal-not used*/
 #define RPM_TAG_PROVIDEFLAGS             1112
 #define RPM_TAG_PROVIDEVERSION           1113
 #define RPM_TAG_OBSOLETEFLAGS            1114
@@ -162,9 +170,9 @@
 #define RPM_TAG_DIRINDEXES               1116
 #define RPM_TAG_BASENAMES                1117
 #define RPM_TAG_DIRNAMES                 1118
-#define RPM_TAG_ORIGDIRINDEXES           1119
-#define RPM_TAG_ORIGBASENAMES            1120
-#define RPM_TAG_ORIGDIRNAMES             1121
+/*#define RPM_TAG_ORIGDIRINDEXES           1119*/ /*RPM internal-not used*/
+/*#define RPM_TAG_ORIGBASENAMES            1120*/ /*RPM internal-not used*/
+/*#define RPM_TAG_ORIGDIRNAMES             1121*/ /*RPM internal-not used*/
 #define RPM_TAG_OPTFLAGS                 1122
 #define RPM_TAG_DISTURL                  1123
 #define RPM_TAG_PAYLOADFORMAT            1124
@@ -173,6 +181,7 @@
 #define RPM_TAG_INSTALLCOLOR             1127
 #define RPM_TAG_INSTALLTID               1128
 #define RPM_TAG_REMOVETID                1129
+/*#define RPMTAG_SHA1RHN                   1130*/ /*RPM internal-not used*/
 #define RPM_TAG_RHNPLATFORM              1131
 #define RPM_TAG_PLATFORM                 1132
 #define RPM_TAG_PATCHESNAME              1133
