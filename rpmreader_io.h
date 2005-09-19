@@ -62,29 +62,30 @@
 #define STORE_BEGIN_BYTE(indices,offset) ( (((indices) + 1) * 0x10) + (offset) )
 
 typedef struct _rpmHeader {
-  long begin_byte;
-  int version;
-  uint32_t num_indices;
-  uint32_t store_size;
+	long begin_byte;
+	int version;
+	uint32_t num_indices;
+	uint32_t store_size;
 } rpmHeader;
 
 typedef struct _rpmIndex {
-  uint32_t tag;
-  uint32_t datatype;
-  uint32_t offset;
-  uint32_t count;
+	uint32_t tag;
+	uint32_t datatype;
+	uint32_t offset;
+	uint32_t count;
 } rpmIndex;
 
 typedef struct _rpmIndexNode {
-  rpmIndex *idx;
-  struct _rpmIndexNode *next;
+	rpmIndex *idx;
+	struct _rpmIndexNode *next;
 } rpmIndexNode;
 
 typedef struct _rpmIndexList {
-  rpmIndexNode *head;
-  rpmIndexNode *tail;
+	rpmIndexNode *head;
+	rpmIndexNode *tail;
 } rpmIndexList;
 
+void _free_rpmreader(zend_rsrc_list_entry *rsrc);
 void _php_free_rpm_index(void **idx);
 int _php_rpm_validity(php_stream *stream);
 int _php_rpm_seek_header(php_stream *stream);
