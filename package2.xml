@@ -11,7 +11,7 @@
   <email>ateixeira@gmail.com</email>
   <active>yes</active>
  </lead>
- <date>2005-09-16</date>
+ <date>2005-10-06</date>
  <time>14:46:00</time>
  <version>
   <release>0.1</release>
@@ -22,6 +22,7 @@
   <api>beta</api>
  </stability>
  <license uri="www.php.net/license/3_0.txt">PHP</license>
+ <notes>1) Initial release</notes>
  <contents>
   <dir name="/">
    <file role="doc" name="CREDITS"/>
@@ -49,20 +50,4 @@
  </dependencies>
  <providesextension>rpmreader</providesextension>
  <extsrcrelease />
- <changelog>
-  <release>
-   <version>
-    <release>0.1</release>
-    <api>0.1</api>
-   </version>
-   <stability>
-    <release>beta</release>
-    <api>beta</api>
-   </stability>
-   <date>2005-09-16</date>
-   <license uri="http://www.php.net/license/3_0.txt">PHP</license>
-   <notes>Initial Release
-   </notes>
-  </release>
- </changelog>
 </package>
