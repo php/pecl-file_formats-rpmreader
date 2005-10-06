@@ -22,6 +22,7 @@
     <version>0.1</version>
     <date>2005-09-12</date>
     <state>beta</state>
+    <notes>1) Initial release</notes>
     <filelist>
       <file role="doc" name="CREDITS"/>
       <file role="doc" name="LICENSE"/>
@@ -35,12 +36,4 @@
       </dir>
     </filelist>
   </release>
-  <changelog>
-    <release>
-      <version>0.1</version>
-      <date>2005-09-16</date>
-      <state>beta</state>
-      <notes>1) Initial release</notes>
-    </release>
-  </changelog>
 </package>
