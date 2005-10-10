@@ -1,39 +1,53 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <!DOCTYPE package SYSTEM "http://pear.php.net/dtd/package-1.0">
 <package version="1.0">
-  <name>rpmreader</name>
-  <summary>RPM file meta information reader</summary>
-  <license>PHP License</license>
-  <description>
-  rpmreader is an extension that provides the ability to read RedHat
-  Package Manager (RPM) files' header information.  This extension
-  currently does not provide the functionality to read the signature
-  or archive sections of the RPM file.
-  </description>
-  <maintainers>
-    <maintainer>
-      <user>atex</user>
-      <name>Andrew Teixeira</name>
-      <email>ateixeira@gmail.com</email>
-      <role>lead</role>
-    </maintainer>
-  </maintainers>
+ <name>rpmreader</name>
+ <summary>RPM file meta information reader</summary>
+ <license>PHP License</license>
+ <description>
+ rpmreader is an extension that provides the ability to read RedHat
+ Package Manager (RPM) files' header information.  This extension
+ currently does not provide the functionality to read the signature
+ or archive sections of the RPM file.
+ </description>
+ <maintainers>
+  <maintainer>
+   <user>atex</user>
+   <name>Andrew Teixeira</name>
+   <email>ateixeira@gmail.com</email>
+   <role>lead</role>
+  </maintainer>
+ </maintainers>
+ <release>
+  <version>0.2</version>
+   <date>2005-10-10</date>
+   <state>beta</state>
+   <notes>
+    - Updated error messages in rpm_open and rpm_get_tag.
+    - Fixed the _php_rpm_validity internal function which was
+      returning 1 (true) on every call due to a missing return.
+   </notes>
+   <filelist>
+    <file role="doc" name="CREDITS"/>
+    <file role="doc" name="LICENSE"/>
+    <file role="src" name="config.m4"/>
+    <file role="src" name="php_rpmreader.h"/>
+    <file role="src" name="rpmreader.c"/>
+    <file role="src" name="rpmreader_io.c"/>
+    <file role="src" name="rpmreader_io.h"/>
+    <dir role="doc" name="examples">
+     <file role="doc" name="example.php"/>
+    </dir>
+  </filelist>
+ </release>
+ <changelog>
   <release>
-    <version>0.1</version>
-    <date>2005-09-12</date>
-    <state>beta</state>
-    <notes>1) Initial release</notes>
-    <filelist>
-      <file role="doc" name="CREDITS"/>
-      <file role="doc" name="LICENSE"/>
-      <file role="src" name="config.m4"/>
-      <file role="src" name="php_rpmreader.h"/>
-      <file role="src" name="rpmreader.c"/>
-      <file role="src" name="rpmreader_io.c"/>
-      <file role="src" name="rpmreader_io.h"/>
-      <dir role="doc" name="examples">
-        <file role="doc" name="example.php"/>
-      </dir>
-    </filelist>
+   <version>0.1</version>
+   <date>2005-10-10</date>
+   <state>beta</state>
+   <notes>
+    - Initial release to PECL.
+   </notes>
   </release>
+ </changelog>
 </package>

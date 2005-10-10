@@ -3,7 +3,10 @@
  <name>rpmreader</name>
  <channel>pecl.php.net</channel>
  <summary>RPM file meta information reader</summary>
- <description>rpmreader is an extension that provides the ability to read RedHat Package Manager (RPM) files' header information.  This extension currently does not provide the functionality to read the signature or archive sections of the RPM file.
+ <description>rpmreader is an extension that provides the ability to
+ read RedHat Package Manager (RPM) files' header information.  This
+ extension currently does not provide the functionality to read the
+ signature or archive sections of the RPM file.
  </description>
  <lead>
   <name>Andrew Teixeira</name>
@@ -11,18 +14,22 @@
   <email>ateixeira@gmail.com</email>
   <active>yes</active>
  </lead>
- <date>2005-10-06</date>
- <time>14:46:00</time>
+ <date>2005-10-10</date>
+ <time>12:57:00</time>
  <version>
-  <release>0.1</release>
-  <api>0.1</api>
+  <release>0.2</release>
+  <api>0.2</api>
  </version>
  <stability>
   <release>beta</release>
   <api>beta</api>
  </stability>
- <license uri="www.php.net/license/3_0.txt">PHP</license>
- <notes>1) Initial release</notes>
+ <license uri="http://www.php.net/license/3_0.txt">PHP 3.0</license>
+ <notes>
+  - Updated error messages in rpm_open and rpm_get_tag.
+  - Fixed the _php_rpm_validity internal function which was returning
+    1 (true) on every call due to a missing return.
+ </notes>
  <contents>
   <dir name="/">
    <file role="doc" name="CREDITS"/>
@@ -50,4 +57,21 @@
  </dependencies>
  <providesextension>rpmreader</providesextension>
  <extsrcrelease />
+ <changelog>
+  <release>
+   <version>
+    <release>0.1</release>
+    <api>0.1</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2005-10-06</date>
+   <license uri="http://www.php.net/license/3_0.txt">PHP 3.0</license>
+   <notes>
+    - Initial release.
+   </notes>
+  </release>
+ </changelog>
 </package>
