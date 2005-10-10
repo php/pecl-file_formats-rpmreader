@@ -102,6 +102,7 @@ int _php_rpm_validity(php_stream *stream)
 			}
 		}
 	}
+	return 0;
 }
 /* }}} */
 

@@ -243,13 +243,13 @@ PHP_FUNCTION(rpm_open)
 		rfr = (php_rpmreader_rsrc *) emalloc(sizeof(php_rpmreader_rsrc));
 		
     if (rfr == NULL) {
+		php_error_docref(NULL TSRMLS_CC, E_ERROR, "Unable to allocate memory for file pointer resource");
 		RETURN_FALSE;
     }
 	
     rfr->stream = php_stream_open_wrapper(Z_STRVAL_P(fname), "rb", REPORT_ERRORS|ENFORCE_SAFE_MODE|STREAM_MUST_SEEK, NULL);
 	
     if (!rfr->stream) {
-		php_error_docref(NULL TSRMLS_CC, E_WARNING, "Cannot open file");
 		efree(rfr);
 		RETURN_FALSE;
     }
@@ -373,12 +373,14 @@ PHP_FUNCTION(rpm_get_tag)
 	}
 
 	if ( (rpmtag < RPM_TAG_MINIMUM) || (rpmtag > RPM_TAG_MAXIMUM) ) {
+		php_error_docref(NULL TSRMLS_CC, E_WARNING, "RPM Tag number is out of range");
 		RETURN_FALSE;
 	}
 
 	idx = zend_llist_get_first(rfr->idxlist);
 
 	if (idx == NULL) {
+		php_error_docref(NULL TSRMLS_CC, E_WARNING, "Cannot retrieve index list");
 		RETURN_FALSE;
 	}
 
@@ -399,6 +401,7 @@ PHP_FUNCTION(rpm_get_tag)
 	}
 
 	if (idx == NULL) {
+		php_error_docref(NULL TSRMLS_CC, E_WARNING, "Cannot retrieve index");
 		RETURN_FALSE;
 	}
 
@@ -488,6 +491,7 @@ PHP_FUNCTION(rpm_get_tag)
 		RETURN_STRING((char *) storeptr, 1);
 		break;
 	default:
+		php_error_docref(NULL TSRMLS_CC, E_WARNING, "Invalid datatype in RPM tag");
 		RETURN_FALSE;
 	}
 }
