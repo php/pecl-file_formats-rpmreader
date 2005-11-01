@@ -85,17 +85,17 @@ typedef struct _rpmIndexList {
 	rpmIndexNode *tail;
 } rpmIndexList;
 
-void _free_rpmreader(zend_rsrc_list_entry *rsrc);
+void _free_rpmreader(zend_rsrc_list_entry *rsrc TSRMLS_DC);
 void _php_free_rpm_index(void **idx);
-int _php_rpm_validity(php_stream *stream);
-int _php_rpm_seek_header(php_stream *stream);
-int _php_rpm_find_signature(php_stream *stream);
-int _php_rpm_find_header(php_stream *stream);
-int _php_rpm_fetch_header(php_stream *stream, rpmHeader **hdr);
-int _php_rpm_fetch_index(php_stream *stream, rpmIndex **idx);
-int _php_rpm_fetch_store(php_stream *stream, rpmHeader *hdr, void **store);
+int _php_rpm_validity(php_stream *stream TSRMLS_DC);
+int _php_rpm_seek_header(php_stream *stream TSRMLS_DC);
+int _php_rpm_find_signature(php_stream *stream TSRMLS_DC);
+int _php_rpm_find_header(php_stream *stream TSRMLS_DC);
+int _php_rpm_fetch_header(php_stream *stream, rpmHeader **hdr TSRMLS_DC);
+int _php_rpm_fetch_index(php_stream *stream, rpmIndex **idx TSRMLS_DC);
+int _php_rpm_fetch_store(php_stream *stream, rpmHeader *hdr, void **store TSRMLS_DC);
 int _php_rpm_import_indices (php_stream *stream, rpmHeader *hdr,
-			     zend_llist **l);
+			     zend_llist **l TSRMLS_DC);
 
 #endif
 

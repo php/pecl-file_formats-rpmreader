@@ -47,6 +47,7 @@ static function_entry rpmreader_functions[] = {
 	PHP_FE(rpm_get_tag, NULL)
 	PHP_FE(rpm_is_valid, NULL)
 	PHP_FE(rpm_open, NULL)
+	PHP_FE(rpm_version, NULL)
 	{NULL, NULL, NULL}
 };
 
@@ -254,21 +255,21 @@ PHP_FUNCTION(rpm_open)
 		RETURN_FALSE;
     }
 	
-    if (!_php_rpm_validity(rfr->stream)) {
+    if (!_php_rpm_validity(rfr->stream TSRMLS_CC)) {
 		php_error_docref(NULL TSRMLS_CC, E_WARNING, "File is not an RPM file");
 		php_stream_close(rfr->stream);
 		efree(rfr);
 		RETURN_FALSE;
     }
 	
-    if (!(retval = _php_rpm_find_header(rfr->stream))) {
+    if (!(retval = _php_rpm_find_header(rfr->stream TSRMLS_CC))) {
 		php_error_docref(NULL TSRMLS_CC, E_WARNING, "RPM Header not found in file");
 		php_stream_close(rfr->stream);
 		efree(rfr);
 		RETURN_FALSE;
     }
 
-    if (_php_rpm_fetch_header(rfr->stream, &rh) < 0x10)	{
+    if (_php_rpm_fetch_header(rfr->stream, &rh TSRMLS_CC) < 0x10)	{
 		php_error_docref(NULL TSRMLS_CC, E_WARNING, "Cannot read header section");
 		php_stream_close(rfr->stream);
 		efree(rfr);
@@ -278,7 +279,7 @@ PHP_FUNCTION(rpm_open)
     rfr->rpmhdr = rh;
 
     idxl = NULL;
-    retval = _php_rpm_import_indices(rfr->stream, rfr->rpmhdr, &idxl);
+    retval = _php_rpm_import_indices(rfr->stream, rfr->rpmhdr, &idxl TSRMLS_CC);
 
     if (idxl == NULL) {
 		php_error_docref(NULL TSRMLS_CC, E_WARNING, "Problem importing indices");
@@ -289,7 +290,7 @@ PHP_FUNCTION(rpm_open)
 
     rfr->idxlist = idxl;
 	
-    retval = _php_rpm_fetch_store(rfr->stream, rfr->rpmhdr, &store);
+    retval = _php_rpm_fetch_store(rfr->stream, rfr->rpmhdr, &store TSRMLS_CC);
     if (store == NULL) {
 		php_error_docref(NULL TSRMLS_CC, E_WARNING, "Problem importing store");
 		php_stream_close(rfr->stream);
@@ -327,7 +328,7 @@ PHP_FUNCTION(rpm_is_valid)
 			RETURN_FALSE;
 		}
 		
-		result = _php_rpm_validity(stream);
+		result = _php_rpm_validity(stream TSRMLS_CC);
 		
 		php_stream_close(stream);
 		
@@ -521,6 +522,14 @@ PHP_FUNCTION(rpm_close)
 	}
 	
 	RETURN_TRUE;
+}
+/* }}} */
+
+/* {{{ proto string rpm_version()
+   Returns a string representing the current version of rpmreader */
+PHP_FUNCTION(rpm_version)
+{
+	RETURN_STRING(PHP_RPMREADER_VERSION, 1);
 }
 /* }}} */
  

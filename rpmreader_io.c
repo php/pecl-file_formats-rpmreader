@@ -63,7 +63,7 @@ void _php_free_rpm_index(void **idx)
 
 /* {{{ proto int _php_rpm_validity(php_stream *stream)
    Will read the first 4 bytes of the file and check to see if they are the magic number that identifies the file as an RPM file. */
-int _php_rpm_validity(php_stream *stream)
+int _php_rpm_validity(php_stream *stream TSRMLS_DC)
 {
 	/*Will return 0 on error, non-zero on success. */
 
@@ -108,7 +108,7 @@ int _php_rpm_validity(php_stream *stream)
 
 /* {{{ proto int _php_rpm_seek_header(php_stream *stream)
    Will read from the file pointer until it reaches the first header magic number.  */
-int _php_rpm_seek_header(php_stream *stream)
+int _php_rpm_seek_header(php_stream *stream TSRMLS_DC)
 {
 	/* This function will return 0 on error, non-zero on success.  The
 	 * return value, if not zero, will contain the number of bytes
@@ -162,7 +162,7 @@ int _php_rpm_seek_header(php_stream *stream)
 
 /* {{{ proto int _php_rpm_find_signature(php_stream *stream)
    Will read from the file pointer until it reaches the first header magic number (the signature). */
-int _php_rpm_find_signature(php_stream *stream)
+int _php_rpm_find_signature(php_stream *stream TSRMLS_DC)
 {
 	/* This function makes use of the php_stream_seek function to
 	 * rewind the file back to the beginning of the file.  The
@@ -182,7 +182,7 @@ int _php_rpm_find_signature(php_stream *stream)
 	else
 		return 0;
 
-	bytecount = _php_rpm_seek_header(stream);
+	bytecount = _php_rpm_seek_header(stream TSRMLS_CC);
 
 	return bytecount;
 }
@@ -190,7 +190,7 @@ int _php_rpm_find_signature(php_stream *stream)
 
 /* {{{ proto int _php_rpm_find_header(php_stream *stream)
    Will read from the file pointer until it reaches the second header magic number (the header). */
-int _php_rpm_find_header(php_stream *stream)
+int _php_rpm_find_header(php_stream *stream TSRMLS_DC)
 {
 	/* This function makes use of the _php_rpm_find_signature function
 	 * to skip to the first header in the file before trying to find
@@ -208,7 +208,7 @@ int _php_rpm_find_header(php_stream *stream)
 
 	/* Use the _php_rpm_find_signature function to get to the first
 	 * header (signature) */
-	bytecount = _php_rpm_find_signature(stream);
+	bytecount = _php_rpm_find_signature(stream TSRMLS_CC);
 	if (bytecount == 0)
 		return 0;
 
@@ -226,7 +226,7 @@ int _php_rpm_find_header(php_stream *stream)
 
 	/* Use the _php_rpm_seek_header function to get to the next
 	 * header */ 
-	retval = _php_rpm_seek_header(stream);
+	retval = _php_rpm_seek_header(stream TSRMLS_CC);
 	if (retval == 0)
 		return 0;
 
@@ -239,7 +239,7 @@ int _php_rpm_find_header(php_stream *stream)
 
 /* {{{ proto int _php_rpm_fetch_header(php_stream *stream, rpmHeader **hdr)
    Will read the header for a header structure within an RPM file. */
-int _php_rpm_fetch_header(php_stream *stream, rpmHeader **hdr)
+int _php_rpm_fetch_header(php_stream *stream, rpmHeader **hdr TSRMLS_DC)
 {
 	/* This function assumes that the file pointer is pointing to the
 	 * first byte of the header.  The function will read the 0x10(16)
@@ -330,7 +330,7 @@ int _php_rpm_fetch_header(php_stream *stream, rpmHeader **hdr)
 
 /* {{{ proto int _php_rpm_fetch_index(php_stream *stream, rpmIndex **idx)
    Will read an index entry within a header in an RPM file. */
-int _php_rpm_fetch_index(php_stream *stream, rpmIndex **idx)
+int _php_rpm_fetch_index(php_stream *stream, rpmIndex **idx TSRMLS_DC)
 {
 	/* This function assumes that the file pointer is pointing to the
 	 * first byte of an index.  The function will read the 0x10(16)
@@ -413,7 +413,7 @@ int _php_rpm_fetch_index(php_stream *stream, rpmIndex **idx)
 /* {{{ proto int _php_rpm_fetch_store(php_stream *stream, rpmHeader *rh, void **store)
    Will read the entire data store within a header in an RPM file. */
 int _php_rpm_fetch_store(php_stream *stream, rpmHeader *rh,
-						 void **store)
+						 void **store TSRMLS_DC)
 {
 	/* This function assumes that the file pointer is pointing
 	 * to the first byte of the store.  If the return value is
@@ -455,7 +455,7 @@ int _php_rpm_fetch_store(php_stream *stream, rpmHeader *rh,
 /* {{{ proto int _php_rpm_import_indices(php_stream *stream, rpmHeader *hdr, zend_llist **idxlist)
    Will import all the index entries in the Header into a linked list so that we don't have to keep referencing the file to get the information. */
 int _php_rpm_import_indices(php_stream *stream, rpmHeader *hdr,
-							zend_llist **idxlist)
+							zend_llist **idxlist TSRMLS_DC)
 {
 	/* The function will return 0 on error, non-zero on success.  If
 	 * successful, the number of indices processed will be returned.
@@ -476,7 +476,7 @@ int _php_rpm_import_indices(php_stream *stream, rpmHeader *hdr,
 	}
 
 	for (i = 0; i < hdr->num_indices; i++) {
-		nbytes = _php_rpm_fetch_index(stream, &idx);
+		nbytes = _php_rpm_fetch_index(stream, &idx TSRMLS_CC);
 		if (nbytes == 0x10) {
 			zend_llist_add_element(idxl, (void *) idx);
 		}

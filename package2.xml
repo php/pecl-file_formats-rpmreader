@@ -14,11 +14,11 @@
   <email>ateixeira@gmail.com</email>
   <active>yes</active>
  </lead>
- <date>2005-10-10</date>
+ <date>2005-11-01</date>
  <time>12:57:00</time>
  <version>
-  <release>0.2</release>
-  <api>0.2</api>
+  <release>0.3</release>
+  <api>0.3</api>
  </version>
  <stability>
   <release>beta</release>
@@ -26,9 +26,14 @@
  </stability>
  <license uri="http://www.php.net/license/3_0.txt">PHP 3.0</license>
  <notes>
-  - Updated error messages in rpm_open and rpm_get_tag.
-  - Fixed the _php_rpm_validity internal function which was returning
-    1 (true) on every call due to a missing return.
+  - Added thread safety code to fix rpmreader not compiling with ZTS
+    enabled (Bug #5842) (patch provided by adamg at pld-linux dot org).
+  - Modified minimum PHP requirement in package2.xml to be 4.4.1 instead of
+    5.0 since rpmreader has been reported to compile as far back as 4.4.1
+    (Bug #5843)
+  - Updated internal version string to 0.3beta
+  - Added the rpm_version function to the extension which will return
+    the version of rpmreader currently installed
  </notes>
  <contents>
   <dir name="/">
@@ -47,7 +52,7 @@
  <dependencies>
   <required>
    <php>
-    <min>5.0.0</min>
+    <min>4.4.1</min>
     <max>5.1.0</max>
    </php>
    <pearinstaller>
@@ -58,6 +63,23 @@
  <providesextension>rpmreader</providesextension>
  <extsrcrelease />
  <changelog>
+  <release>
+   <version>
+    <release>0.2</release>
+    <api>0.2</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2005-10-10</date>
+   <license uri="http://www.php.net/license/3_0.txt">PHP 3.0</license>
+   <notes>
+    - Updated error messages in rpm_open and rpm_get_tag.
+    - Fixed the _php_rpm_validity internal function which was returning
+      1 (true) on every call due to a missing return.
+   </notes>
+  </release>
   <release>
    <version>
     <release>0.1</release>

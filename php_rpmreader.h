@@ -29,7 +29,7 @@
 #include "rpmreader_io.h"
 #endif
 
-#define PHP_RPMREADER_VERSION "0.2beta"
+#define PHP_RPMREADER_VERSION "0.3beta"
 #define PHP_RPMREADER_EXTNAME "rpmreader"
 
 /* The RPM data types that are stored in headers */
@@ -212,6 +212,7 @@ PHP_FUNCTION(rpm_close);
 PHP_FUNCTION(rpm_get_tag);
 PHP_FUNCTION(rpm_is_valid);
 PHP_FUNCTION(rpm_open);
+PHP_FUNCTION(rpm_version);
 
 extern zend_module_entry rpmreader_module_entry;
 #define phpext_rpmreader_ptr &rpmreader_module_entry
