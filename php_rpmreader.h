@@ -29,7 +29,7 @@
 #include "rpmreader_io.h"
 #endif
 
-#define PHP_RPMREADER_VERSION "0.3beta"
+#define PHP_RPMREADER_VERSION "0.4.0-dev"
 #define PHP_RPMREADER_EXTNAME "rpmreader"
 
 /* The RPM data types that are stored in headers */
