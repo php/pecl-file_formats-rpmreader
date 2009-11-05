@@ -56,7 +56,6 @@
       1 (true) on every call due to a missing return.
    </notes>
   </release>
- </changelog>
   <release>
    <version>0.1</version>
    <date>2005-10-06</date>
