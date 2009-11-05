@@ -1,55 +1,79 @@
-<?xml version="1.0" encoding="ISO-8859-1" ?>
-<!DOCTYPE package SYSTEM "http://pear.php.net/dtd/package-1.0">
-<package version="1.0">
+<?xml version="1.0"?>
+<package packagerversion="1.4.0a2" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0"  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
  <name>rpmreader</name>
+ <channel>pecl.php.net</channel>
  <summary>RPM file meta information reader</summary>
- <license>PHP License</license>
- <description>
- rpmreader is an extension that provides the ability to read RedHat
- Package Manager (RPM) files' header information.  This extension
- currently does not provide the functionality to read the signature
- or archive sections of the RPM file.
+ <description>rpmreader is an extension that provides the ability to
+ read RedHat Package Manager (RPM) files' header information.  This
+ extension currently does not provide the functionality to read the
+ signature or archive sections of the RPM file.
  </description>
- <maintainers>
-  <maintainer>
-   <user>atex</user>
-   <name>Andrew Teixeira</name>
-   <email>ateixeira@gmail.com</email>
-   <role>lead</role>
-  </maintainer>
- </maintainers>
- <release>
-  <version>0.3</version>
-   <date>2005-11-01</date>
-   <state>beta</state>
-   <notes>
-    - Added thread safety code to fix rpmreader not compiling with ZTS
-      enabled (Bug #5842) (patch provided by adamg at pld-linux dot org).
-    - Modified minimum PHP requirement in package2.xml to be 4.4.1 instead of
-      5.0 since rpmreader has been reported to compile as far back as 4.4.1
-      (Bug #5843)
-    - Updated internal version string to 0.3beta
-    - Added the rpm_version function to the extension which will return
-      the version of rpmreader currently installed
-   </notes>
-   <filelist>
-    <file role="doc" name="CREDITS"/>
-    <file role="doc" name="LICENSE"/>
-    <file role="src" name="config.m4"/>
-    <file role="src" name="php_rpmreader.h"/>
-    <file role="src" name="rpmreader.c"/>
-    <file role="src" name="rpmreader_io.c"/>
-    <file role="src" name="rpmreader_io.h"/>
-    <dir role="doc" name="examples">
+ <lead>
+  <name>Andrew Teixeira</name>
+  <user>atex</user>
+  <email>ateixeira@gmail.com</email>
+  <active>yes</active>
+ </lead>
+ <date>2005-11-01</date>
+ <time>12:57:00</time>
+ <version>
+  <release>0.3</release>
+  <api>0.3</api>
+ </version>
+ <stability>
+  <release>beta</release>
+  <api>beta</api>
+ </stability>
+ <license uri="http://www.php.net/license/3_0.txt">PHP 3.0</license>
+ <notes>
+  - Added thread safety code to fix rpmreader not compiling with ZTS
+    enabled (Bug #5842) (patch provided by adamg at pld-linux dot org).
+  - Modified minimum PHP requirement in package2.xml to be 4.4.1 instead of
+    5.0 since rpmreader has been reported to compile as far back as 4.4.1
+    (Bug #5843)
+  - Updated internal version string to 0.3beta
+  - Added the rpm_version function to the extension which will return
+    the version of rpmreader currently installed
+ </notes>
+ <contents>
+  <dir name="/">
+   <file role="doc" name="CREDITS"/>
+   <file role="doc" name="LICENSE"/>
+   <file role="src" name="config.m4"/>
+   <file role="src" name="php_rpmreader.h"/>
+   <file role="src" name="rpmreader.c"/>
+   <file role="src" name="rpmreader_io.c"/>
+   <file role="src" name="rpmreader_io.h"/>
+   <dir role="doc" name="examples">
      <file role="doc" name="example.php"/>
-    </dir>
-  </filelist>
- </release>
+   </dir>
+  </dir> <!-- / -->
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>4.4.1</min>
+    <max>5.1.0</max>
+   </php>
+   <pearinstaller>
+    <min>1.4.0a2</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>rpmreader</providesextension>
+ <extsrcrelease />
  <changelog>
   <release>
-   <version>0.2</version>
+   <version>
+    <release>0.2</release>
+    <api>0.2</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
    <date>2005-10-10</date>
-   <state>beta</state>
+   <license uri="http://www.php.net/license/3_0.txt">PHP 3.0</license>
    <notes>
     - Updated error messages in rpm_open and rpm_get_tag.
     - Fixed the _php_rpm_validity internal function which was returning
@@ -57,11 +81,18 @@
    </notes>
   </release>
   <release>
-   <version>0.1</version>
+   <version>
+    <release>0.1</release>
+    <api>0.1</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
    <date>2005-10-06</date>
-   <state>beta</state>
+   <license uri="http://www.php.net/license/3_0.txt">PHP 3.0</license>
    <notes>
-    - Initial release to PECL.
+    - Initial release.
    </notes>
   </release>
  </changelog>
