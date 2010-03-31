@@ -42,7 +42,7 @@
 /* True global variables */
 static int le_rpmreader;
 
-static function_entry rpmreader_functions[] = {
+static zend_function_entry rpmreader_functions[] = {
 	PHP_FE(rpm_close, NULL)
 	PHP_FE(rpm_get_tag, NULL)
 	PHP_FE(rpm_is_valid, NULL)
