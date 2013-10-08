@@ -25,8 +25,12 @@
 #include <stdio.h>
 #endif
 
-#ifndef _STDINT_H
-#include <stdint.h>
+#ifdef PHP_WIN32
+# include "win32/php_stdint.h"
+#else
+# ifndef _STDINT_H
+#  include <stdint.h>
+# endif
 #endif
 
 #ifndef PHP_H

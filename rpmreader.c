@@ -26,9 +26,14 @@
 #endif
 
 #include "php.h"
+#include "ext/standard/info.h"
 
-#ifndef _STDINT_H
-#include <stdint.h>
+#ifdef PHP_WIN32
+# include "win32/php_stdint.h"
+#else
+# ifndef _STDINT_H
+#  include <stdint.h>
+# endif
 #endif
 
 #ifndef _RPMREADER_IO_H
@@ -356,7 +361,6 @@ PHP_FUNCTION(rpm_get_tag)
 	int found = 0;
 	uint32_t count, rpmtag, intvalue;
 	void *storeptr = NULL;
-	zend_llist_position indexptr;
 	rpmIndex *idx;
 
 	if (ZEND_NUM_ARGS() != 2 || zend_parse_parameters(2 TSRMLS_CC, "zl", &arg1, &rpmtag) == FAILURE) {
@@ -408,7 +412,7 @@ PHP_FUNCTION(rpm_get_tag)
 
 	count = idx->count;
 	storeptr = rfr->store;
-	storeptr += idx->offset;
+	(char *)storeptr += idx->offset;
 
 	switch (idx->datatype) {
 	case RPM_TYPE_NULL:
@@ -422,7 +426,7 @@ PHP_FUNCTION(rpm_get_tag)
 			array_init(return_value);
 			while (count > 0)	{
 				add_next_index_string(return_value, (char *) storeptr, 1);
-				storeptr += sizeof(char);
+				(char *)storeptr += sizeof(char);
 				count--;
 			}
 		}
@@ -437,7 +441,7 @@ PHP_FUNCTION(rpm_get_tag)
 			while (count > 0) {
 				intvalue = ntohl(*((uint8_t *) storeptr));
 				add_next_index_long(return_value, (unsigned) intvalue);
-				storeptr += sizeof(uint8_t);
+				(char *)storeptr += sizeof(uint8_t);
 				count--;
 			}
 		}
@@ -452,7 +456,7 @@ PHP_FUNCTION(rpm_get_tag)
 			while (count > 0)	{
 				intvalue = ntohl(*((uint16_t *) storeptr));
 				add_next_index_long(return_value, (unsigned) intvalue);
-				storeptr += sizeof(uint16_t);
+				(char *)storeptr += sizeof(uint16_t);
 				count--;
 			}
 		}
@@ -467,7 +471,7 @@ PHP_FUNCTION(rpm_get_tag)
 			while (count > 0)	{
 				intvalue = ntohl(*((uint32_t *) storeptr));
 				add_next_index_long(return_value, (unsigned) intvalue);
-				storeptr += sizeof(uint32_t);
+				(char *)storeptr += sizeof(uint32_t);
 				count--;
 			}
 		}
@@ -481,7 +485,7 @@ PHP_FUNCTION(rpm_get_tag)
 			while (count > 0) {
 				add_next_index_string(return_value, (char *) storeptr, 1);
 				storeptr = strchr((char *) storeptr, 0);
-				storeptr++;
+				((char *)storeptr)++;
 				count--;
 			}
 		}
@@ -505,7 +509,6 @@ PHP_FUNCTION(rpm_close)
 {
 	zval *arg;
 	php_rpmreader_rsrc *rfr;
-	rpmIndex *ri;
 	
 	if (ZEND_NUM_ARGS() != 1 || zend_parse_parameters(1 TSRMLS_CC, "z", &arg) == FAILURE) {
 		WRONG_PARAM_COUNT;

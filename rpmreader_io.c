@@ -22,8 +22,12 @@
  * files as well as tests associated with the RPM binary format.
  */
 
-#ifndef _STDINT_H
-#include <stdint.h>
+#ifdef PHP_WIN32
+# include "win32/php_stdint.h"
+#else
+# ifndef _STDINT_H
+#  include <stdint.h>
+# endif
 #endif
 
 #ifndef _RPMREADER_IO_H
@@ -344,7 +348,7 @@ int _php_rpm_fetch_index(php_stream *stream, rpmIndex **idx TSRMLS_DC)
 	 * of the first index in the header.
 	 */
 
-	int nbytes, byte, bytesread, uint32_size;
+	int nbytes, bytesread, uint32_size;
 	uint32_t fourbyte;
 	rpmIndex *ri = NULL;
 
