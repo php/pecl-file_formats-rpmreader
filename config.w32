@@ -1,0 +1,9 @@
+// $Id$
+// vim:ft=javascript
+
+ARG_WITH("rpmreader", "for rpmreader support", "no");
+
+if (PHP_RPMREADER != "no") {
+  EXTENSION("rpmreader", "rpmreader.c rpmreader_io.c");
+}
+

@@ -40,6 +40,7 @@
    <file role="doc" name="CREDITS"/>
    <file role="doc" name="LICENSE"/>
    <file role="src" name="config.m4"/>
+   <file role="src" name="config.w32"/>
    <file role="src" name="php_rpmreader.h"/>
    <file role="src" name="rpmreader.c"/>
    <file role="src" name="rpmreader_io.c"/>
